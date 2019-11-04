@@ -1,0 +1,19 @@
+{
+  "name": "note-app-nodejs",
+  "version": "1.0.0",
+  "description": "notes app",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/walid-hajhussien/Note-app-NodeJs.git"
+  },
+  "author": "Walid HajHussien",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/walid-hajhussien/Note-app-NodeJs/issues"
+  },
+  "homepage": "https://github.com/walid-hajhussien/Note-app-NodeJs#readme"
+}
