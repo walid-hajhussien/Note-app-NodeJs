@@ -1,3 +1,10 @@
-const nt = require("./notes");
+const validator = require("validator");
+const chalk = require("chalk");
 
-console.log(nt.getNotes());
+const isEmail = validator.isEmail("1@yahoo.com");
+
+if (isEmail) {
+  console.log(chalk.bold.green("Success!"));
+} else {
+  console.log(chalk.red("Faild!"));
+}
