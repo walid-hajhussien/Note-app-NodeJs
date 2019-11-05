@@ -10,7 +10,7 @@ function getNotes() {
 
 function addNote(title, body) {
   const notes = loadNotes();
-  const doplicate = notes.length === 0 ? false : isDoplicateNotes(title, notes);
+  const doplicate = notes.length === 0 ? false : isNotesExist(title, notes);
 
   if (doplicate) {
     console.log(chalk.red("Doplicate Notes can't saved!"));
@@ -18,6 +18,20 @@ function addNote(title, body) {
     notes.push({ title: title, body: body });
     saveNotes(notes);
     console.log(chalk.green("Note Saved..."));
+  }
+}
+
+//remove note
+function removeNotes(title) {
+  const notes = loadNotes();
+  const exist = notes.length === 0 ? false : isNotesExist(title, notes);
+
+  if (exist) {
+    deleteNote(notes, title);
+    saveNotes(notes);
+    console.log(chalk.blue("Note Deleted..."));
+  } else {
+    console.log(chalk.red("Notes not found"));
   }
 }
 
@@ -37,7 +51,7 @@ function saveNotes(notes) {
   fs.writeFileSync("notes.json", notesJson);
 }
 
-function isDoplicateNotes(title, notes) {
+function isNotesExist(title, notes) {
   const isDoplicate = notes.filter(function(note) {
     return note.title === title;
   });
@@ -45,7 +59,16 @@ function isDoplicateNotes(title, notes) {
   return isDoplicate.length === 0 ? false : true;
 }
 
+function deleteNote(notes, title) {
+  for (let i = 0; i < notes.length; i++) {
+    if (notes[i].title === title) {
+      notes.splice(i, 1);
+    }
+  }
+}
+
 module.exports = {
   getNotes: getNotes,
-  addNote: addNote
+  addNote: addNote,
+  removeNotes: removeNotes
 };
