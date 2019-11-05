@@ -1,9 +1,14 @@
 // to validate the string
 const validator = require("validator");
+
 // to color the console
 const chalk = require("chalk");
+
 // to get input from the console
 const yargs = require("yargs");
+
+// custome module
+const notes = require("./notes");
 
 // regester the remove command
 yargs.command({
@@ -49,7 +54,7 @@ yargs.command({
     }
   },
   handler: function(argv) {
-    console.log("Adding a new note!", argv.title, "//" + argv.body);
+    notes.addNote(argv.title, argv.body);
   }
 });
 
