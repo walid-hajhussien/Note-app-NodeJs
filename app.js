@@ -30,8 +30,15 @@ yargs.command({
 yargs.command({
   command: "read",
   describe: "read note",
-  handler() {
-    console.log("the note readed!");
+  builder: {
+    title: {
+      describe: "note to find",
+      demandOption: true,
+      type: "string"
+    }
+  },
+  handler(argv) {
+    notes.readNote(argv.title);
   }
 });
 
@@ -40,7 +47,10 @@ yargs.command({
   command: "list",
   describe: "list note",
   handler() {
-    console.log("the note listed!");
+    let lists = notes.listNotes();
+    lists.forEach(list => {
+      console.log(chalk.red(list.title) + "    " + chalk.green(list.body));
+    });
   }
 });
 

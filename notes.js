@@ -35,6 +35,26 @@ const removeNotes = title => {
   }
 };
 
+//list note
+const listNotes = () => {
+  const notes = loadNotes();
+  return notes;
+};
+
+//read note
+const readNote = title => {
+  const notes = loadNotes();
+  let found = notes.find(note => {
+    return note.title === title;
+  });
+
+  if (found) {
+    console.log(chalk.blue(found.title) + "    " + chalk.green(found.body));
+  } else {
+    console.log(chalk.red("No resualt match !"));
+  }
+};
+
 // helper
 const loadNotes = () => {
   try {
@@ -68,5 +88,7 @@ const deleteNote = (notes, title) => {
 module.exports = {
   getNotes: getNotes,
   addNote: addNote,
-  removeNotes: removeNotes
+  removeNotes: removeNotes,
+  listNotes: listNotes,
+  readNote: readNote
 };
