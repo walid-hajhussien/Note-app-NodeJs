@@ -2,13 +2,13 @@ const fs = require("fs");
 const chalk = require("chalk");
 
 // get notes
-function getNotes() {
+const getNotes = () => {
   return "Your notes";
-}
+};
 
 // add notes
 
-function addNote(title, body) {
+const addNote = (title, body) => {
   const notes = loadNotes();
   const doplicate = notes.length === 0 ? false : isNotesExist(title, notes);
 
@@ -19,10 +19,10 @@ function addNote(title, body) {
     saveNotes(notes);
     console.log(chalk.green("Note Saved..."));
   }
-}
+};
 
 //remove note
-function removeNotes(title) {
+const removeNotes = title => {
   const notes = loadNotes();
   const exist = notes.length === 0 ? false : isNotesExist(title, notes);
 
@@ -33,10 +33,10 @@ function removeNotes(title) {
   } else {
     console.log(chalk.red("Notes not found"));
   }
-}
+};
 
 // helper
-function loadNotes() {
+const loadNotes = () => {
   try {
     const bufferData = fs.readFileSync("notes.json");
     const notes = bufferData.toString();
@@ -44,28 +44,26 @@ function loadNotes() {
   } catch (error) {
     return [];
   }
-}
+};
 
-function saveNotes(notes) {
+const saveNotes = notes => {
   const notesJson = JSON.stringify(notes);
   fs.writeFileSync("notes.json", notesJson);
-}
+};
 
-function isNotesExist(title, notes) {
-  const isDoplicate = notes.filter(function(note) {
-    return note.title === title;
-  });
+const isNotesExist = (title, notes) => {
+  const isDoplicate = notes.filter(note => note.title === title);
 
   return isDoplicate.length === 0 ? false : true;
-}
+};
 
-function deleteNote(notes, title) {
+const deleteNote = (notes, title) => {
   for (let i = 0; i < notes.length; i++) {
     if (notes[i].title === title) {
       notes.splice(i, 1);
     }
   }
-}
+};
 
 module.exports = {
   getNotes: getNotes,
