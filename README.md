@@ -10,7 +10,7 @@ back-end application using Node.Js
 
 add    --> node app.js add --title="[note title]" --body="[note body]"
 
-#remove note
+# remove note
 
 remove --> node app.js remove --title="[note title]" 
 
