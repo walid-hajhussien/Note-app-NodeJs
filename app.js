@@ -47,6 +47,7 @@ yargs.command({
   command: "list",
   describe: "list note",
   handler() {
+
     let lists = notes.listNotes();
     lists.forEach(list => {
       console.log(chalk.red(list.title) + "    " + chalk.green(list.body));
