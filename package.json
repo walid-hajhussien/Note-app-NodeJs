@@ -4,8 +4,9 @@
   "description": "notes app",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "nodemon": "nodemon ./app.js ozil"
+    "nodemon": "nodemon ./app.js ozil",
+    "list": " node app.js list",
+    "commands": "node app.js --help"
   },
   "repository": {
     "type": "git",
